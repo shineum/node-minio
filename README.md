@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Run minio-storage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Start minio-storage
 
-## Available Scripts
+## start minio-storage
 
-In the project directory, you can run:
+```
+docker-compose up -d minio-storage
+```
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Create minio service account
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Create minio service account
 
-### `npm test`
+## Login minio console
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+http://localhost:9001
 
-### `npm run build`
+defalut user: admin
+default password: changme
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Create service account
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Identity > Service Accounts
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[button] Create service account
 
-### `npm run eject`
+[button] Create
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[button] Download for import or Copy Access Key and Secret Key values
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Set environment variables
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Copy "sample.env" file to ".env" file
 
-## Learn More
+Edit ".env" file
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| Env. | Description |
+| --- | --- |
+| MINIO_HOST | minio service ip address |
+| MINIO_PORT | minio service port |
+| MINIO_USE_SSL | true or false |
+| MINIO_ACCESS_KEY | value from minio service account |
+| MINIO_SECRET_KEY | value from minio service account |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ex)
+```
+MINIO_HOST=192.168.1.200
+MINIO_PORT=9000
+MINIO_USE_SSL=false
+MINIO_ACCESS_KEY=nHLYz20rWH0s21rU
+MINIO_SECRET_KEY=Fk9gNSbr9pTtRZefXkldpvXMrIPRcMsD
+```
 
-### Code Splitting
+# launch app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+docker-compose up -d
+```
 
-### Analyzing the Bundle Size
+# test
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+http://localhost:3000
