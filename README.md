@@ -2,7 +2,7 @@
 
 Start minio-storage
 
-## start minio-storage
+## Start minio-storage
 
 ```
 docker-compose up -d minio-storage
