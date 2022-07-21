@@ -17,8 +17,10 @@ Create minio service account
 
 http://localhost:9001
 
-defalut user: admin
-default password: changme
+| Input | value |
+| --- | --- |
+| User | admin |
+| Password | changeme |
 
 ## Create service account
 
