@@ -3,6 +3,8 @@ const fileupload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const _ = require('lodash');
+const minioHandler = require('./minioHandler');
+
 const port = 3000
 
 var app = express();
@@ -24,10 +26,16 @@ app.delete('/upload/:fileId', async (req, res, next) => {
     res.json({});
 });
 
+app.get('/fileInfoList', async (req, res, next) => {
+    res.json({});
+});
+
 app.get('/fileInfo/:fileId', async (req, res, next) => {
     res.json({});
 });
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
-})
+});
+
+minioHandler.initBuckets();
