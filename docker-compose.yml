@@ -2,6 +2,7 @@ version: '3'
 services:
   minio-storage:
     image: minio/minio
+    container_name: minio-storage
     ports:
       - 9000:9000
       - 9001:9001
@@ -11,6 +12,8 @@ services:
     volumes:
       - ./storage/minio:/data
     command: server /data --console-address ":9001"
+    networks:
+      - minio-network
 
   minio-app:
     container_name: minio-app
@@ -21,8 +24,14 @@ services:
     ports:
       - '3000:3000'
     environment:
-      MINIO_HOST: ${MINIO_HOST}
-      MINIO_PORT: ${MINIO_PORT}
-      MINIO_USE_SSL: ${MINIO_USE_SSL}
-      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
-      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
+      MINIO_HOST: ${MINIO_HOST:-minio-storage}
+      MINIO_PORT: ${MINIO_PORT:-9000}
+      MINIO_USE_SSL: ${MINIO_USE_SSL:-false}
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:-access_key}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:-secret_key}
+    networks:
+      - minio-network
+      
+networks:
+  minio-network:
+    driver: 'bridge'
