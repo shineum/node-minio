@@ -7,8 +7,8 @@ const minioCfg = {
     endPoint: process.env.MINIO_HOST,
     port: Number.parseInt( process.env.MINIO_PORT || '9000' ),
     useSSL: ( process.env.MINIO_USE_SSL === 'true' ),
-    accessKey: process.env.MIOIO_ACCESS_KEY,
-    secretKey: process.env.MIOIO_SECRET_KEY
+    accessKey: process.env.MINIO_ACCESS_KEY,
+    secretKey: process.env.MINIO_SECRET_KEY
 }
 const minioClient = new Minio.Client(minioCfg);
 const mBucketInfo = 's3-info';
