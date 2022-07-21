@@ -41,17 +41,17 @@ Edit ".env" file
 
 | Env. | Description |
 | --- | --- |
-| MINIO_HOST | minio service ip address |
-| MINIO_PORT | minio service port - default 9000 |
+| MINIO_HOST | minio service ip or domain |
+| MINIO_PORT | minio service port |
 | MINIO_USE_SSL | true or false |
-| MINIO_ACCESS_KEY | value from minio service account |
-| MINIO_SECRET_KEY | value from minio service account |
+| MINIO_ACCESS_KEY | value from minio service account - should be set |
+| MINIO_SECRET_KEY | value from minio service account - should be set |
 
 ex)
 ```
-MINIO_HOST=192.168.1.200
-MINIO_PORT=9000
-MINIO_USE_SSL=false
+# MINIO_HOST=minio-storage
+# MINIO_PORT=9000
+# MINIO_USE_SSL=false
 MINIO_ACCESS_KEY=nHLYz20rWH0s21rU
 MINIO_SECRET_KEY=Fk9gNSbr9pTtRZefXkldpvXMrIPRcMsD
 ```
