@@ -1,6 +1,6 @@
 version: '3'
 services:
-  s3:
+  minio-storage:
     image: minio/minio
     ports:
       - 9000:9000
@@ -11,3 +11,18 @@ services:
     volumes:
       - ./storage/minio:/data
     command: server /data --console-address ":9001"
+
+  minio-app:
+    container_name: minio-app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      MINIO_HOST: ${MINIO_HOST}
+      MINIO_PORT: ${MINIO_PORT}
+      MINIO_USE_SSL: ${MINIO_USE_SSL}
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
