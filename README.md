@@ -17,7 +17,7 @@ Create minio service account
 
 http://localhost:9001
 
-| Input | value |
+| Input | Value |
 | --- | --- |
 | User | admin |
 | Password | changeme |
